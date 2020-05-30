@@ -1,33 +1,35 @@
-var path = require('path');
-
-module.exports = {
-    mode: 'development',
-    entry: './src/app.js',
-    output: {
-        path: path.resolve(__dirname, 'public'),
-        publicPath: '/',
-        filename: 'bundle.js'
-    },
-    module: {
-        rules: [
-            {
-                loader: 'babel-loader',
-                test: /\.js$/,
-                exclude: /node_modules/
-            },
-            {
-                test: /\.s?css$/,
-                use: [
-                    'style-loader',
-                    'css-loader',
-                    'sass-loader'
-                ],
-            }
-        ]
-    },
-    devtool: 'eval-nosources-cheap-module-source-map',
-    devServer: {
-        contentBase: path.resolve(__dirname, 'public'),
-        historyApiFallback: true,
+const path = require('path');
+module.exports = (env) => {
+    const isProduction = env === 'production';
+    return {
+        mode: 'development',
+        entry: './src/app.js',
+        output: {
+            path: path.resolve(__dirname, 'public'),
+            publicPath: '/',
+            filename: 'bundle.js'
+        },
+        module: {
+            rules: [
+                {
+                    loader: 'babel-loader',
+                    test: /\.js$/,
+                    exclude: /node_modules/
+                },
+                {
+                    test: /\.s?css$/,
+                    use: [
+                        'style-loader',
+                        'css-loader',
+                        'sass-loader'
+                    ],
+                }
+            ]
+        },
+        devtool: isProduction ? 'source-map' : 'eval-nosources-cheap-module-source-map',
+        devServer: {
+            contentBase: path.resolve(__dirname, 'public'),
+            historyApiFallback: true,
+        }
     }
 };
