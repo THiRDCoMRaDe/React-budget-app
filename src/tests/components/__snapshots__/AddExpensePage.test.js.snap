@@ -8,6 +8,5 @@ exports[`should render AddExpensePage correctly 1`] = `
   <ExpenseForm
     onsubmit={[Function]}
   />
-  this is from my add expense component
 </div>
 `;
