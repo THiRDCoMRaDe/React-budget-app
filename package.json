@@ -24,6 +24,7 @@
     "css-loader": "^3.5.3",
     "express": "^4.15.4",
     "firebase": "^7.14.6",
+    "history": "^4.10.1",
     "moment": "^2.26.0",
     "normalize.css": "^8.0.1",
     "numeral": "^2.0.6",
